@@ -4,6 +4,12 @@ import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
+import android.view.View
+import androidx.navigation.NavHostController
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.NavHostFragment
 import org.eclipse.paho.android.service.MqttAndroidClient
 import org.eclipse.paho.client.mqttv3.*
 
@@ -14,7 +20,25 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        connect(applicationContext)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.main_menu, menu)
+        return true;
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.redFragmentMenuItem -> {
+                print("Show Red Fragment")
+                val id = R.id.nav_host_fragment
+                val navHostFragment = supportFragmentManager.findFragmentById(id) as NavHostFragment
+                val navController = navHostFragment.navController
+                navController.navigate(R.id.redFragment)
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
     fun connect(applicationContext : Context)

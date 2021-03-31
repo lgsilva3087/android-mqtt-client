@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/mqttConnectionFragment">
+
+    <fragment
+        android:id="@+id/mqttConnectionFragment"
+        android:name="cu.guillex.postrack.MqttConnectionFragment"
+        android:label="fragment_mqtt_connection"
+        tools:layout="@layout/fragment_mqtt_connection" >
+        <action
+            android:id="@+id/action_mqttConnectionFragment_to_redFragment"
+            app:destination="@id/redFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/redFragment"
+        android:name="cu.guillex.postrack.RedFragment"
+        android:label="fragment_red"
+        tools:layout="@layout/fragment_red" />
+</navigation>
