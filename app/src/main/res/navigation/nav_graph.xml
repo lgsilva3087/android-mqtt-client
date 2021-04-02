@@ -8,8 +8,8 @@
     <fragment
         android:id="@+id/mqttConnectionFragment"
         android:name="cu.guillex.postrack.MqttConnectionFragment"
-        android:label="fragment_mqtt_connection"
-        tools:layout="@layout/fragment_mqtt_connection" >
+        android:label="@string/mqtt_conn_fragment_label"
+        tools:layout="@layout/fragment_mqtt_connection">
         <action
             android:id="@+id/action_mqttConnectionFragment_to_redFragment"
             app:destination="@id/redFragment" />
@@ -17,6 +17,6 @@
     <fragment
         android:id="@+id/redFragment"
         android:name="cu.guillex.postrack.RedFragment"
-        android:label="fragment_red"
+        android:label="@string/red_fragment_label"
         tools:layout="@layout/fragment_red" />
 </navigation>
