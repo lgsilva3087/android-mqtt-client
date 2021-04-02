@@ -9,22 +9,35 @@ import android.view.MenuItem
 import android.view.View
 import androidx.navigation.NavHostController
 import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.NavigationUI
+import cu.guillex.postrack.databinding.ActivityMainBinding
 import org.eclipse.paho.android.service.MqttAndroidClient
 import org.eclipse.paho.client.mqttv3.*
 
 class MainActivity : AppCompatActivity() {
     private lateinit var mqttAndroidClient: MqttAndroidClient
 
+    private lateinit var binding : ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
+        val navController = this.findNavController(R.id.nav_host_fragment)
+        NavigationUI.setupActionBarWithNavController(this, navController)
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        val navController = this.findNavController(R.id.nav_host_fragment)
+        return navController.navigateUp()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.main_menu, menu)
-        return true;
+        return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
