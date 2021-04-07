@@ -9,17 +9,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Postrack">
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
         <service
             android:name="org.eclipse.paho.android.service.MqttService"
-            android:exported="false" />
+            android:exported="false" /><!--Available to only your app-->
     </application>
 
     <uses-permission android:name="android.permission.WAKE_LOCK" />
@@ -27,4 +27,6 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
+    <!--Esto es para poder usar servicios en primer plano-->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
 </manifest>
