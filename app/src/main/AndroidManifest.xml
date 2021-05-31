@@ -20,6 +20,10 @@
         <service
             android:name="org.eclipse.paho.android.service.MqttService"
             android:exported="false" /><!--Available to only your app-->
+
+        <service
+            android:name=".services.ForegroundService"
+            android:exported="false" /><!--Available to only your app-->
     </application>
 
     <uses-permission android:name="android.permission.WAKE_LOCK" />

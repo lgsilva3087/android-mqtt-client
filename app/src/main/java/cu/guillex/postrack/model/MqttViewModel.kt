@@ -11,6 +11,8 @@ import org.eclipse.paho.client.mqttv3.*
 class MqttViewModel(application: Application) : AndroidViewModel(application) {
     var example = MutableLiveData<Int>()
 
+    var connectedEvent = MutableLiveData(false)
+
     private lateinit var mqttAndroidClient : MqttAndroidClient
 
     var m_lastData = MutableLiveData<String>("")
@@ -47,6 +49,7 @@ class MqttViewModel(application: Application) : AndroidViewModel(application) {
             {
                 override fun onSuccess(asyncActionToken: IMqttToken) {
                     Log.i("MqttViewModel", "success ")
+                    connectedEvent.value = true
                     //connectionStatus = true
                     // Give your callback on connection established here
                     subscribe("#")
