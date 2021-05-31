@@ -49,6 +49,9 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
+    //Google play services
+    implementation 'com.google.android.gms:play-services-location:17.1.0'
+
     /*Navigation components*/
     def nav_version = "2.3.4"
 
