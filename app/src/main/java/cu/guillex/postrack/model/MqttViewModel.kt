@@ -18,7 +18,7 @@ class MqttViewModel(application: Application) : AndroidViewModel(application) {
     var m_lastData = MutableLiveData<String>("")
 
     init {
-        Log.i("MqttViewModel", "MqttViewModel created")
+        Log.i("Postrack", "MqttViewModel created")
 
         example.value = 0
 
@@ -28,7 +28,7 @@ class MqttViewModel(application: Application) : AndroidViewModel(application) {
 
     override fun onCleared() {
         super.onCleared()
-        Log.i("MqttViewModel", "MqttViewModel destroyed")
+        Log.i("Postrack", "MqttViewModel destroyed")
     }
 
     fun connect(applicationContext : Context)
@@ -48,7 +48,7 @@ class MqttViewModel(application: Application) : AndroidViewModel(application) {
             token.actionCallback = object : IMqttActionListener
             {
                 override fun onSuccess(asyncActionToken: IMqttToken) {
-                    Log.i("MqttViewModel", "success ")
+                    Log.i("Postrack", "onSuccess")
                     connectedEvent.value = true
                     //connectionStatus = true
                     // Give your callback on connection established here
@@ -57,7 +57,7 @@ class MqttViewModel(application: Application) : AndroidViewModel(application) {
 
                 override fun onFailure(asyncActionToken: IMqttToken, exception: Throwable) {
                     //connectionStatus = false
-                    Log.i("MqttViewModel", "failure")
+                    Log.i("Postrack", "onFailure")
 
                     // Give your callback on connection failure here
                     exception.printStackTrace()
@@ -76,17 +76,17 @@ class MqttViewModel(application: Application) : AndroidViewModel(application) {
             mqttAndroidClient.subscribe(topic, qos, null, object : IMqttActionListener {
                 override fun onSuccess(asyncActionToken: IMqttToken) {
                     // Give your callback on Subscription here
-                    Log.i("MqttViewModel", "Subscrito a $topic")
+                    Log.i("Postrack", "Subscrito a $topic")
                 }
 
                 override fun onFailure(asyncActionToken: IMqttToken, exception: Throwable) {
                     // Give your subscription failure callback here
-                    Log.i("MqttViewModel", "No Subscrito a $topic")
+                    Log.i("Postrack", "No Subscrito a $topic")
                 }
             })
         } catch (e: MqttException) {
             // Give your subscription failure callback here
-            Log.i("MqttViewModel", "Excepcion subscribiendo a $topic")
+            Log.i("Postrack", "Excepcion subscribiendo a $topic")
         }
     }
 
@@ -116,7 +116,7 @@ class MqttViewModel(application: Application) : AndroidViewModel(application) {
             }
 
             override fun messageArrived(topic: String, message: MqttMessage) {
-                Log.i("MqttViewModel", "Message arrived on topic: $topic")
+                Log.i("Postrack", "Message arrived on topic: $topic")
                 try {
                     val data = String(message.payload, charset("UTF-8"))
 
@@ -137,7 +137,7 @@ class MqttViewModel(application: Application) : AndroidViewModel(application) {
     private fun onMessageReceived(data: String) {
         m_lastData.value = data
 
-        Log.i("MqttViewModel", "Message received: $data")
+        Log.i("Postrack", "Message received: $data")
     }
 
     fun publish(topic: String, data: String) {

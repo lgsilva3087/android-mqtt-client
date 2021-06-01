@@ -17,15 +17,15 @@ class ForegroundService : Service() {
     override fun onCreate() {
         super.onCreate()
 
-        Log.i("Mqtt", "ForegroundService - OnCreate")
+        Log.i("Postrack", "ForegroundService - OnCreate")
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
 
-        Log.i("MQTT", "ForegroundService - onStartCommand")
+        Log.i("Postrack", "ForegroundService - onStartCommand")
 
         if (intent != null && intent.getBooleanExtra("Close_Action_Intent", false)) {
-            Log.i("MQTT", "Cerrar intent")
+            Log.i("Postrack", "Cerrar intent")
             stopSelf()
             return START_NOT_STICKY
         }

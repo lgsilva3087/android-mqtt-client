@@ -3,17 +3,30 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/mqttConnectionFragment">
+    app:startDestination="@id/mapsFragment">
 
+    <fragment
+        android:id="@+id/mapsFragment"
+        android:name="cu.guillex.postrack.MapsFragment"
+        android:label="@string/maps_fragment_label"
+        tools:layout="@layout/fragment_maps">
+        <action
+            android:id="@+id/action_mapsFragment_to_redFragment"
+            app:destination="@id/redFragment" />
+    </fragment>
+
+    <!--
     <fragment
         android:id="@+id/mqttConnectionFragment"
         android:name="cu.guillex.postrack.MqttConnectionFragment"
         android:label="@string/mqtt_conn_fragment_label"
         tools:layout="@layout/fragment_mqtt_connection">
         <action
-            android:id="@+id/action_mqttConnectionFragment_to_redFragment"
-            app:destination="@id/redFragment" />
+            android:id="@+id/action_mqttConnectionFragment_to_mapsFragment"
+            app:destination="@id/mapsFragment" />
     </fragment>
+    -->
+
     <fragment
         android:id="@+id/redFragment"
         android:name="cu.guillex.postrack.RedFragment"

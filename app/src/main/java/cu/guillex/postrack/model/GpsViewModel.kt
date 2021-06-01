@@ -29,6 +29,8 @@ class GpsViewModel(application: Application) : AndroidViewModel(application) {
     private lateinit var locationRequest: LocationRequest
     private lateinit var locationCallback: LocationCallback
 
+    public var isStarted = false
+
     init {
         Log.i("Postrack", "GpsViewModel created")
 
@@ -40,7 +42,7 @@ class GpsViewModel(application: Application) : AndroidViewModel(application) {
         Log.i("Postrack", "GpsViewModel destroyed")
     }
 
-    @SuppressLint("MissingPermission")
+    /*@SuppressLint("MissingPermission")
     fun Start()
     {
         if(context != null)
@@ -64,18 +66,16 @@ class GpsViewModel(application: Application) : AndroidViewModel(application) {
                 Log.i("Postrack", "location result: $result")
             }
         }
-    }
+    }*/
 
     @SuppressLint("MissingPermission")
     fun StartLocationUpdates()
     {
-        if(context != null)
+        if(context != null && !isStarted)
         {
-            //fusedLocationClient = LocationServices.getFusedLocationProviderClient(context!!)
-
             locationRequest = LocationRequest()
-            locationRequest.interval = 100
-            locationRequest.fastestInterval = 50
+            locationRequest.interval = 5000
+            locationRequest.fastestInterval = 1000
             locationRequest.smallestDisplacement = 10f
             locationRequest.priority = LocationRequest.PRIORITY_HIGH_ACCURACY
 
@@ -91,6 +91,8 @@ class GpsViewModel(application: Application) : AndroidViewModel(application) {
             }
 
             fusedLocationClient.requestLocationUpdates(locationRequest, locationCallback, null)
+
+            isStarted = true
         }
     }
 

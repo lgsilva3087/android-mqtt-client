@@ -2,6 +2,7 @@
     <string name="app_name">Postrack</string>
 
     <string name="main_open_red_fragment">Red Fragment</string>
+    <string name="main_open_maps_fragment">Maps Fragment</string>
 
     <string name="login_password">Password</string>
     <string name="login_user">User</string>
@@ -9,6 +10,7 @@
 
     <string name="mqtt_conn_fragment_label">Mqtt Connect</string>
     <string name="red_fragment_label">Red fragment</string>
+    <string name="maps_fragment_label">Maps fragment</string>
 
     <string name="mqtt_channel">MQTT</string>
     <string name="mqtt_channel_description">MQTT channel for notifications</string>
