@@ -47,14 +47,14 @@ class MqttConnectionFragment : Fragment() {
             Log.i("Postrack", it.toString())
         })
 
-        gpsViewModel.Start()
+        //gpsViewModel.Start()
+        gpsViewModel.StartLocationUpdates()
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_mqtt_connection, container, false)
     }
 

@@ -12,4 +12,6 @@
 
     <string name="mqtt_channel">MQTT</string>
     <string name="mqtt_channel_description">MQTT channel for notifications</string>
+
+    <string name="location_rationale">This app uses location permission</string>
 </resources>
